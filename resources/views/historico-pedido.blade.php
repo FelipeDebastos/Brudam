@@ -26,6 +26,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
         function goBack() {
             window.history.back();
@@ -35,12 +36,13 @@
             $.getJSON('/relatorio-pedido', function(pedidos) {
                 $.each(pedidos, function(key, pedido) {
                     var formattedFrete = formatMoney(pedido.valor_frete);
+                    var formattedData = moment(pedido.data_entrega).format('DD/MM/YYYY')
 
                     var row = '<tr>' +
                         '<td>' + pedido.id_cliente + '</td>' +
                         '<td>' + pedido.nome + '</td>' +
                         '<td>' + pedido.telefone + '</td>' +
-                        '<td>' + pedido.data_entrega + '</td>' +
+                        '<td>' + formattedData + '</td>' +
                         '<td>' + formattedFrete + '</td>' +
                         '</tr>';
 
