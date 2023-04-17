@@ -24,6 +24,13 @@
                 reverse: true
             });
         });
+
+        setTimeout(function() {
+            $('#alert-success, #alert-error, #alert-warning, #alert-info').fadeOut('slow', function() {
+                $(this).remove();
+            });
+        }, 3000);
+    
     </script>
 
 
@@ -41,6 +48,14 @@
 </head>
 
 <body class="antialiased">
+@foreach (['success', 'error', 'warning', 'info'] as $type)
+    @if (session()->has($type))
+    <div id="alert-{{ $type }}" class="alert alert-{{ $type }} {{ $type == 'error' ? 'alert-danger' : '' }}">
+        {{ session()->get($type) }}
+    </div>
+    @endif
+    @endforeach
+
     <div style="display: flex; justify-content: center;">
         <form action="{{ route('processar_pedido') }}" method="POST" style="width: 50%; margin-top: 50px;">
             @csrf
@@ -72,18 +87,23 @@
                 <input type="text" class="form-control" id="valor_pedido" name="valor_pedido">
             </div>
 
-            <button type="submit" class="btn btn-primary" style="background-color: green; border: none; outline: none;">
-                Cadastrar
-            </button>
-            <button type="reset" class="btn btn-secondary">
-                Limpar
-            </button>
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <button type="submit" class="btn btn-primary" style="background-color: green; border: none; outline: none; margin-right: 10px;">
+                        Cadastrar
+                    </button>
+                    <button type="reset" class="btn btn-secondary" style="margin-right: 10px;">
+                        Limpar
+                    </button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary">
+                        Histórico de pedidos
+                    </button>
+                </div>
+            </div>
         </form>
-        @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-        @endif
+    </div>
 
     </div>
 </body>

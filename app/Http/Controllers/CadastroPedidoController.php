@@ -15,7 +15,6 @@ class CadastroPedidoController extends Controller
         $telefone = $request->input('telefone');
         $valor_pedido = str_replace(['.', ','], ['', '.'], $request->input('valor_pedido'));
 
-    
         $cliente = new Cliente;
         $cliente->nome = $nome;
         $cliente->email = $email;
@@ -27,6 +26,10 @@ class CadastroPedidoController extends Controller
         $pedido->id_cliente = $cliente->id;
         $pedido->data = date('Y-m-d');
         $pedido->save();    
+
+        return $pedido->save() 
+        ? redirect()->back()->with('success', 'Pedido cadastrado com sucesso.')
+        : redirect()->back()->with('error', 'Erro ao cadastrar o pedido.');
     }
 }
 
