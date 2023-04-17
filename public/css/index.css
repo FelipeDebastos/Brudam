@@ -11,9 +11,13 @@ h2 {
     justify-content: center;
 }
 
-.form-cadastro {
+.form-register {
     margin-top: 50px;
     width: 50%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
 .form-buttons-container {
