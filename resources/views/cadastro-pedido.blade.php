@@ -48,7 +48,7 @@
 
             <div class="form-group">
                 <label for="valor_frete" class="form-label">Valor do frete:</label>
-                <input type="text" class="form-control" id="valor_frete" name="valor_frete">
+                <input type="text" class="form-control" id="valor_frete" name="valor_frete" required>
             </div>
 
             <div class="form-buttons-container">

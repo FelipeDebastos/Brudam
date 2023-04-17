@@ -29,6 +29,11 @@ class CadastroPedidoController extends Controller
        
         $pedido->save();    
 
+        if (strlen($telefone) < 11) {
+            session()->flash('error', 'O telefone não deve ter menos 11 caracteres.');
+            return redirect()->back();
+        }
+
         return $pedido->save() 
         ? redirect()->back()->with('success', 'Pedido cadastrado com sucesso.')
         : redirect()->back()->with('error', 'Erro ao cadastrar o pedido.');

@@ -13,8 +13,8 @@ class Pedido extends Model
 
     protected $fillable = [
         'id_cliente',
-        'data',
-        'valor'
+        'data_entrega',
+        'valor_frete'
     ];
 
     public function cliente()
