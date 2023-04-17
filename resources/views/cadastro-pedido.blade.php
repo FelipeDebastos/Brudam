@@ -41,14 +41,19 @@
                 <input type="tel" class="form-control" id="telefone" name="telefone" required>
             </div>
 
-            <div class="form-group">
-                <label for="data_entrega" class="form-label">Data da entrega:</label>
-                <input type="date" class="form-control" id="data_entrega" name="data_entrega" value="{{ date('Y-m-d') }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="valor_frete" class="form-label">Valor do frete:</label>
-                <input type="text" class="form-control" id="valor_frete" name="valor_frete" required>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="data_entrega" class="form-label">Data da entrega:</label>
+                        <input type="date" class="form-control" id="data_entrega" name="data_entrega" value="{{ date('Y-m-d') }}" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="valor_frete" class="form-label">Valor do frete:</label>
+                        <input type="text" class="form-control" id="valor_frete" name="valor_frete" required>
+                    </div>
+                </div>
             </div>
 
             <div class="form-buttons-container">
