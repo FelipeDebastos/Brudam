@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('cadastro-pedido');
 });
 
-Route::get('/historico-pedido', [HistoricoPedidoController::class, 'relatorio'])->name('historico-pedido');
+Route::get('/historico-pedido', function () {
+    return view('historico-pedido');
+});
+
+Route::get('/relatorio-pedido', [HistoricoPedidoController::class, 'relatorio'])->name('relatorio-pedido.json');
 
 Route::post('/processar_pedido', [CadastroPedidoController::class, 'store'])->name('processar_pedido');

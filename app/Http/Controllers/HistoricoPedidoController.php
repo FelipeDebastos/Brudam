@@ -10,9 +10,9 @@ class HistoricoPedidoController extends Controller
     {
         $pedidos = DB::table('pedido')
             ->join('cliente', 'cliente.id', '=', 'pedido.id_cliente')
-            ->select('pedido.*', 'cliente.nome')
+            ->select('pedido.*', 'cliente.nome', 'cliente.telefone')
             ->get();
 
-            return view('historico-pedido', ['pedidos' => $pedidos]);;
+            return response()->json($pedidos);
     }
 }

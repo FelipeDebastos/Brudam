@@ -13,7 +13,8 @@ class CadastroPedidoController extends Controller
         $nome = $request->input('nome');
         $email = $request->input('email');
         $telefone = $request->input('telefone');
-        $valor_pedido = str_replace(['.', ','], ['', '.'], $request->input('valor_pedido'));
+        $data_entrega = $request->input('data_entrega');
+        $valor_frete = str_replace(['.', ','], ['', '.'], $request->input('valor_frete'));
 
         $cliente = new Cliente;
         $cliente->nome = $nome;
@@ -22,9 +23,10 @@ class CadastroPedidoController extends Controller
         $cliente->save();
     
         $pedido = new Pedido;
-        $pedido->valor = $valor_pedido;
+        $pedido->valor_frete = $valor_frete;
+        $pedido->data_entrega =  $data_entrega;
         $pedido->id_cliente = $cliente->id;
-        $pedido->data = date('Y-m-d');
+       
         $pedido->save();    
 
         return $pedido->save() 

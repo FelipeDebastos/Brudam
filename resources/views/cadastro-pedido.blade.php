@@ -42,13 +42,13 @@
             </div>
 
             <div class="form-group">
-                <label for="data_pedido" class="form-label">Data do pedido:</label>
-                <input type="date" class="form-control" id="data_pedido" name="data_pedido" value="{{ date('Y-m-d') }}" required>
+                <label for="data_entrega" class="form-label">Data da entrega:</label>
+                <input type="date" class="form-control" id="data_entrega" name="data_entrega" value="{{ date('Y-m-d') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="valor_pedido" class="form-label">Valor do pedido:</label>
-                <input type="text" class="form-control" id="valor_pedido" name="valor_pedido">
+                <label for="valor_frete" class="form-label">Valor do frete:</label>
+                <input type="text" class="form-control" id="valor_frete" name="valor_frete">
             </div>
 
             <div class="form-buttons-container">
@@ -56,7 +56,7 @@
                     <button type="submit" class="btn btn-primary" id="register-button">Cadastrar</button>
                     <button type="reset" class="btn btn-secondary" id="clean-button">Limpar</button>
                 </div>
-                <a href="{{ route('historico-pedido') }}" class="btn btn-secondary">Histórico de pedidos</a>
+                <a href="/historico-pedido" class="btn btn-secondary">Histórico de pedidos</a>
             </div>
         </form>
     </div>
@@ -70,7 +70,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#valor_pedido').mask('000.000.000,00', {
+        $('#valor_frete').mask('000.000.000,00', {
             reverse: true
         });
 
