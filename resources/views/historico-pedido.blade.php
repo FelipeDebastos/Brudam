@@ -34,9 +34,28 @@
         $(document).ready(function() {
             $.getJSON('/relatorio-pedido', function(pedidos) {
                 $.each(pedidos, function(key, pedido) {
-                    $('#table-pedidos tbody').append('<tr><td>' + pedido.id_cliente + '</td><td>' + pedido.nome + '</td><td>' + pedido.telefone + '</td><td>' + pedido.data_entrega + '</td><td>' + pedido.valor_frete + '</td></tr>');
+                    var formattedFrete = formatMoney(pedido.valor_frete);
+
+                    var row = '<tr>' +
+                        '<td>' + pedido.id_cliente + '</td>' +
+                        '<td>' + pedido.nome + '</td>' +
+                        '<td>' + pedido.telefone + '</td>' +
+                        '<td>' + pedido.data_entrega + '</td>' +
+                        '<td>' + formattedFrete + '</td>' +
+                        '</tr>';
+
+                    $('#table-pedidos tbody').append(row);
                 });
             });
+
+            function formatMoney(amount) {
+                var formatted = parseFloat(amount).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
+
+                return formatted;
+            }
         });
     </script>
 </body>
