@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CadastroPedidoController;
+use App\Http\Controllers\HistoricoPedidoController;
 
 
 /*
@@ -19,10 +20,6 @@ Route::get('/', function () {
     return view('cadastro-pedido');
 });
 
-Route::get('/historico-pedido', function () {
-    return view('historico-pedido');
-})->name('historico-pedido');
-
-
+Route::get('/historico-pedido', [HistoricoPedidoController::class, 'relatorio'])->name('historico-pedido');
 
 Route::post('/processar_pedido', [CadastroPedidoController::class, 'store'])->name('processar_pedido');
