@@ -16,7 +16,13 @@ use App\Http\Controllers\CadastroPedidoController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('cadastro-pedido');
 });
+
+Route::get('/historico-pedido', function () {
+    return view('historico-pedido');
+})->name('historico-pedido');
+
+
 
 Route::post('/processar_pedido', [CadastroPedidoController::class, 'store'])->name('processar_pedido');

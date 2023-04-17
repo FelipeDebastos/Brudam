@@ -80,9 +80,7 @@
                         Limpar
                     </button>
                 </div>
-                <button type="button" class="btn btn-secondary">
-                    Histórico de pedidos
-                </button>
+                <a href="{{ route('historico-pedido') }}" class="btn btn-secondary">Histórico de pedidos</a>
             </div>
         </form>
     </div>
