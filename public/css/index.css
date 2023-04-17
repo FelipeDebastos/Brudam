@@ -1,0 +1,33 @@
+h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-cadastro {
+    margin-top: 50px;
+    width: 50%;
+}
+
+.form-buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#register-button {
+    background-color: green;
+    border:none;
+    outline: none;
+    margin-right: 10px;
+}
+
+#clean-button {
+    margin-right: 10px;
+}

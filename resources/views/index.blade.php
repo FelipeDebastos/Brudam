@@ -5,18 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-    <!-- Inclui o CSS do Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Brudam</title>
 
-    <!-- Inclui o JavaScript do Bootstrap e as dependências do jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
 
     <script>
         $(document).ready(function() {
@@ -30,25 +28,12 @@
                 $(this).remove();
             });
         }, 3000);
-    
     </script>
 
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-    <!-- Styles -->
-    <style>
-        /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
-        button:hover {
-            background-color: darkgreen;
-        }
-    </style>
 </head>
 
 <body class="antialiased">
-@foreach (['success', 'error', 'warning', 'info'] as $type)
+    @foreach (['success', 'error', 'warning', 'info'] as $type)
     @if (session()->has($type))
     <div id="alert-{{ $type }}" class="alert alert-{{ $type }} {{ $type == 'error' ? 'alert-danger' : '' }}">
         {{ session()->get($type) }}
@@ -56,11 +41,10 @@
     @endif
     @endforeach
 
-    <div style="display: flex; justify-content: center;">
-        <form action="{{ route('processar_pedido') }}" method="POST" style="width: 50%; margin-top: 50px;">
+    <div class="form-container">
+        <form class="form-cadastro" action="{{ route('processar_pedido') }}" method="POST">
             @csrf
-            <h2 style="text-align: center; font-size: 2em; font-weight: bold; color: #333; margin-bottom: 20px;">Cadastro de Pedido</h2>
-
+            <h2>Cadastro de Pedido</h2>
 
             <div class="form-group">
                 <label for="nome">Nome:</label>
@@ -87,20 +71,18 @@
                 <input type="text" class="form-control" id="valor_pedido" name="valor_pedido">
             </div>
 
-            <div style="display: flex; justify-content: space-between;">
+            <div class="form-buttons-container">
                 <div>
-                    <button type="submit" class="btn btn-primary" style="background-color: green; border: none; outline: none; margin-right: 10px;">
+                    <button type="submit" class="btn btn-primary" id="register-button" >
                         Cadastrar
                     </button>
-                    <button type="reset" class="btn btn-secondary" style="margin-right: 10px;">
+                    <button type="reset" class="btn btn-secondary" id="clean-button">
                         Limpar
                     </button>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-secondary">
-                        Histórico de pedidos
-                    </button>
-                </div>
+                <button type="button" class="btn btn-secondary">
+                    Histórico de pedidos
+                </button>
             </div>
         </form>
     </div>
